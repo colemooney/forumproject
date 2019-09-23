@@ -9,7 +9,8 @@ const userSchema = new Schema({
   image: String,
   email: String,
   realName: String,
-  googleID: String
+  googleID: String,
+  followers: Number
 });
 
 const User = mongoose.model("User", userSchema);
