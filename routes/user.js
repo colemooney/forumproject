@@ -97,4 +97,8 @@ router.get(
   })
 );
 
+router.post('/profile', (req, res, next)=>{
+  
+})
+
 module.exports = router;
