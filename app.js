@@ -18,7 +18,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/forumproject', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -92,7 +92,7 @@ mongoose
 
 
 
-  
+
   app.use((req, res, next) => {
     res.locals.theUser = req.user;
     // with passport, its always called req.user by default
