@@ -89,9 +89,9 @@ mongoose
     });
   }));
 
-  
-  // Express View engine setup
-  
+
+
+
   
   app.use((req, res, next) => {
     res.locals.theUser = req.user;

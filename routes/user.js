@@ -121,23 +121,6 @@ router.post('/account/edit-my-account', (req, res, next)=>{
 })
 
 
-router.get(
-  "/auth/google",
-  passport.authenticate("google", {
-    scope: [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email"
-    ]
-  })
-);
-
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: "/profile",
-    failureRedirect: "/" // here you would redirect to the login page using traditional login approach
-  })
-);
 
 router.post('/follow', (req, res, next)=>{
   let user_id = req.user._id;
