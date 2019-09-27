@@ -16,7 +16,6 @@ const bcrypt = require("bcrypt");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-
 mongoose.Promise = Promise;
 mongoose
   .connect('mongodb://localhost/forumproject', {useNewUrlParser: true})
