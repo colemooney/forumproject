@@ -1,0 +1,30 @@
+<h1 class="center"><span class="name">@{{result.username}}</span></h1>
+</br>
+<div class="profile">
+<h2>{{result.followers.length}} followers</h2> 
+<form action="/timeline/{{result._id}}" method="POST">
+<button>Follow</button>
+</form>
+</div>
+<div>
+<h1 class="center">Time Line</h1>
+<div class="posts">
+{{#each dreamresult}}
+
+  <div class="post">
+<h2 class="name">@{{this.user.username}}</h2>
+</br>
+<div>
+
+  <img src={{this.image}}>
+
+
+  <h3>{{this.text}}</h3>
+
+
+  <a href='/timeline/{{this.id}}/comments'>Comment</a>
+  <a href='/profile/editdream/{{this._id}}'>Edit Dream</a>
+</div>
+{{/each}}
+</div>
+</div>

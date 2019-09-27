@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const Dream   = require("../models/Dream.js");
 const User           = require("../models/User.js");
 const bcrypt         = require("bcrypt");
 const bcryptSalt     = 10;
@@ -64,7 +65,23 @@ router.get("/logout", (req, res, next) => {
 });
 
 router.get('/profile', (req, res, next)=>{
-  res.render('user/profile');
+  console.log('<><><><><><><', req.user)
+  Dream.find({user: req.user._id}).populate('user')
+  .then((result)=>{
+
+
+      data = {
+        result: result
+      }
+      
+      res.render('user/profile', data)
+   
+  })
+  .catch((err)=>{
+    next(err)
+  })
+  
+  
 })
 
 router.post('/account/delete-my-account', (req, res, next)=>{
@@ -78,6 +95,31 @@ router.post('/account/delete-my-account', (req, res, next)=>{
   })
 
 })
+router.get('/account/edit-my-account', (req, res, next)=>{
+  User.findById(req.user._id)
+  .then((result)=>{
+    res.render('user/editprofile', {result})
+  })
+  .catch((err)=>{
+    next(err)
+  })
+})
+router.post('/account/edit-my-account', (req, res, next)=>{
+  User.findByIdAndUpdate(req.user._id, {
+    username: req.body.theUsername,
+    password: req.body.thePassword,
+    realName: req.body.fullName,
+    email: req.body.theEmail,
+    image: req.body.theImage
+  }, {new: true})
+  .then(()=>{
+      res.redirect('/profile')
+  })
+  .catch((err)=>{
+      next(err)
+  })
+})
+
 
 router.get(
   "/auth/google",
@@ -97,8 +139,71 @@ router.get(
   })
 );
 
-router.post('/profile', (req, res, next)=>{
-  
+router.post('/follow', (req, res, next)=>{
+  let user_id = req.user._id;
+  let follow = req.body.follow_id;
+
+  let bulk = Follow.collection.initializeUnorderedBulkOp();
+
+  bulk.find({ 'user': SVGUnitTypes.ObjectId(user_id) }).upsert().updateOne({
+    $addToSet: {
+      following: SVGUnitTypes.ObjectId(follow)
+    }
+  });
+  bulk.find({ 'user': SVGUnitTypes.ObjectId(follow) }).upsert().updateOne({
+    $addToSet: {
+      following: SVGUnitTypes.ObjectId(user_id)
+    }
+  });
+  bulk.execute(function(err, doc) {
+    if(err) {
+      return res.json({
+        'state': false,
+        'msg': err
+      })
+    }
+    res.json({
+      'state': false,
+      'msg': 'followed'
+    })
+  })
+
 })
+
+router.get("/profile/followers", (req, res, next) => {
+  User.findById(req.user._id)
+  .populate('followers')
+  .then((result)=>{
+    res.render('user/allfollowers', {result})
+  }).catch((err)=>{
+    next(err)
+  })
+});
+router.get('/profile/editdream/:id', (req, res, next)=>{
+  let id = req.params.id
+  Dream.findById(id).populate('user')
+  .then((result)=>{
+    console.log("these are the results ----------- ", result);
+    res.render('dreams/editdream', {result})
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+router.post('/profile/editdream/:id', (req, res, next)=>{
+  console.log("This is the req . body ...>>>>>>...>>>>..>>>> ", req.body)
+  Dream.findByIdAndUpdate(req.params.id, {
+    image: req.body.theImage,
+    text: req.body.theText
+  }, {new: true})
+  .populate('user')
+  .then(()=>{
+    res.redirect('/profile')
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
 
 module.exports = router;

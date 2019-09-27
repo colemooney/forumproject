@@ -8,24 +8,4 @@ mongoose
   .catch(err => console.error('Error connecting to mongo', err));
 
   
-  const User = mongoose.model('User', {
-    username: String,
-    password: String,
-    isAdmin: Boolean,
-    image: String,
-    email: String,
-    realName: String,
-    googleID: String
-  });
-
-
-
-
-  User.create({
-    username: "admin", 
-    password: "admin", 
-    isAdmin: true, 
-    image: "", 
-    email: "deez@nutz.com",
-    realName: "Jeff",
-         })
+ 

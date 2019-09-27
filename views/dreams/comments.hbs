@@ -1,0 +1,38 @@
+<h1 class="center">@{{result.user.username}}'s Comments</h1>
+
+
+
+
+<div class="posts">
+  <div class="post">
+<h2>@{{result.user.username}}</h2>
+
+  <img src={{result.image}}>
+
+  <h3>{{result.text}}</h3>
+</div>
+</div>
+
+
+<hr>
+<h2 class="center">Comments</h2>
+<div class="center">
+<ol>
+  <li>comment comment</li>
+  <li>comment comment</li>
+  <li>comment comment</li>
+</ol>
+</div>
+<hr>
+<br><br>
+<div>
+  <form id="form" action="/timeline/{{result._id}}/comments" method="POST">
+    <label>Comment</label>
+    <br><br>
+    <input type="text" placeholder="Comment" name="theComments">
+    <br><br>
+    <button>Submit</button>
+  </form>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>

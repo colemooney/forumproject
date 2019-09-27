@@ -1,1 +1,9 @@
-hi d
+<h2 class="center">User List</h2>
+
+{{#each result}}
+<ul> 
+  <li>
+  <h1><a href="/timeline/{{this._id}}"> {{this.username}}</a></h1>
+  </li>
+</ul>
+{{/each}}

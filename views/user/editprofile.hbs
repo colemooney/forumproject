@@ -1,0 +1,18 @@
+<form action="/account/edit-my-account" method="POST" id="form">
+  <label for="username">Username</label>
+  <input id="username" type="text" name="theUsername" placeholder="@{{result.username}}">
+<br><br>
+  <label for="password">Password</label>
+  <input id="password" type="password" name="thePassword" placeholder="Your password">
+<br><br>
+  <label for="realName">Full name</label>
+  <input id="realName" type="text" name="fullName" placeholder="{{result.realName}}">
+<br><br>
+  <label for="email">Email</label>
+  <input id="email" type="email" name="theEmail" placeholder="{{result.email}}">
+  <br><br>
+  <label for="image">Profile Picture</label>
+  <input id="image" type="text" name="theImage" placeholder="{{result.image}}">
+<br><br><br><br>
+<button>Submit</button>
+</form>

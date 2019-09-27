@@ -1,11 +1,11 @@
 <form action="/login" method="POST" id="form">
-  <h2>Login</h2>
+  <h2 class="center">Login</h2>
 
-  <label for="username">Username</label>
-  <input type="text" name="username">
+  <label for="username"  >Username</label>
+  <input type="text"   name="username" placeholder="Username">
   </br>
   <label for="password">Password</label>
-  <input type="password" name="password">
+  <input type="password"  name="password" placeholder="Password">
 
   {{#if errorMessage }}
     <div class="error-message">{{ errorMessage }}</div>
@@ -17,10 +17,3 @@
     Don't have an account? <a href="/signup">Sign up</a>
   </p>
 </form>
-
-{{#unless user}}
-  <div class="center">
-  Home page:
-    <a href="/auth/google">Login With Google</a>
-  </div>
-{{/unless}}

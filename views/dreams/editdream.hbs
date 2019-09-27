@@ -1,0 +1,17 @@
+<h1>Edit</h1>
+<div>
+
+<h2>@{{result.user.username}}'s Dream</h2>
+<form action="/profile/editdream/{{result._id}}" method="POST">
+  <input id="image" type="text" name="theImage" placeholder="{{result.image}}">
+</br>
+  <input id="text" type="text" name="theText" placeholder="{{result.text}}">
+  </br>
+<button>Submit</button>
+</form>
+<form action="/profile/editdream/{{result._id}}" method="POST">
+  <button>Delete Dream</button>
+</form>
+
+</ul>
+</div>

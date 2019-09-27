@@ -10,7 +10,9 @@ const userSchema = new Schema({
   email: String,
   realName: String,
   googleID: String,
-  followers: Number
+  followers: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  following: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  dreams: [{type: Schema.Types.ObjectId, ref: 'Dream'}]
 });
 
 const User = mongoose.model("User", userSchema);

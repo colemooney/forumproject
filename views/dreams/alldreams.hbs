@@ -1,0 +1,19 @@
+
+
+<div class='posts'>
+{{#each result}}
+  <div class='post'>
+<a href='/timeline/{{this.user._id}}'>@{{this.user.username}}</a>
+<br><br>
+
+  <img src={{this.image}}>
+</br>
+
+  <h3>{{this.text}}</h3>
+  
+  </div>
+  
+{{/each}}
+
+
+</div>

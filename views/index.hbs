@@ -1,2 +1,6 @@
+<div class="home">
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}'s home page!</p>
+{{#if theUser}}
+<h2>{{theUser.username}}'s Home Page</h2>
+{{/if}}
+</div>

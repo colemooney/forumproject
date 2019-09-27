@@ -145,6 +145,11 @@ mongoose
 // default value for title local
 app.locals.title = 'ForumHack';
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+})
+
 
 
 const index = require('./routes/index');
@@ -156,5 +161,10 @@ app.use('/', user);
 const timeline = require('./routes/timeline');
 app.use('/', timeline);
 
+const dream = require('./routes/dream');
+app.use('/', dream);
+
+const comments = require('./routes/comments');
+app.use('/', comments);
 
 module.exports = app;

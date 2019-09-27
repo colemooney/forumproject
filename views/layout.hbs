@@ -8,12 +8,17 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
-  <ul>
+  <ul class="navigation">
   <li><a href="/">Home</a></li>
   
     {{#if theUser}}
   <li>
-    <a href="/timeline">Time Line</a>
+    <a href="/timeline">User Search</a>
+    </li>
+    <li>
+    <a href="/dreams">Dream</a>
+    |
+    <a href="/dreams/all">All Dreams</a>
     </li>
     {{/if}}
   

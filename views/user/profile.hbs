@@ -1,12 +1,40 @@
-<h1>Profile</h1>
-<h3 class="link">Hello, {{theUser.username}}</h3>
 
 <div class="profile">
-<image class="profile-pic" width="100" src={{theUser.image}}><image>
-<h2>{{theUser.username}}</h2>
-</div>
 
+<image class="profile-pic" width="100" src={{theUser.image}}><image></image>
+<h2 class="link">Hello, <span class="name">@{{theUser.username}}</span> welcome to your profile!</h2>
 
+<a href='/profile/followers'><h2>{{theUser.followers.length}} Followers</a></h2>
+
+<a href="/account/edit-my-account">Edit Account Info</a>
 <form action="/account/delete-my-account" method="POST" class="center">
 <button>Delete My Account</button>
 </form>
+</div>
+
+
+
+<h1 class='center'>Time Line</h1>
+<div class="posts">
+
+{{#each result}}
+<div class="post">
+
+<h2 class="name">@{{this.user.username}}</h2>
+
+
+  <img src={{this.image}}>
+
+  <h3>{{this.text}}</h3>
+
+  <a href='/profile/editdream/{{this._id}}'>Edit Dream</a>
+  <form action='/timeline/delete-my-dream/{{this._id}}' method="POST">
+    <button>Delete</button>
+  </form>
+  <a href='/timeline/{{this._id}}/comments'>comments</a>
+
+</div>
+{{/each}}
+
+
+</div>

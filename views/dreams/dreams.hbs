@@ -1,0 +1,20 @@
+<div>
+<form action="/dreams" method="POST" id="form">
+  <label for="image">Image Url</label>
+  <input id="image" type="text" name="theImage" placeholder="place here">
+  <br><br>
+  <label for="text">Text here</label>
+  <input id="text" type="text" name="theText" placeholder="Your text">
+
+   
+  <button>Dream</button>
+
+</form>
+</div>
+<div>
+  {{#each userResult.user}}
+    <h2>{{this.user}}</h2>
+    <img src='{{this.image}}'>
+    <h3>{{this.text}}</h3>
+  {{/each}}
+</div>
