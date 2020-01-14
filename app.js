@@ -89,11 +89,19 @@ mongoose
       return next(null, user);
     });
   }));
+<<<<<<< HEAD
 
 
 
 
 
+=======
+  
+  
+  // Express View engine setup
+  
+  
+>>>>>>> 2fe6cff3d6627f3b9013cd11588d0a1be53b18cc
   app.use((req, res, next) => {
     res.locals.theUser = req.user;
     // with passport, its always called req.user by default

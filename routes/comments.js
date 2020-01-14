@@ -24,10 +24,7 @@ router.get('/timeline/:id/comments', (req, res, next)=>{
           console.log("LKJLJLKJLJK")
           console.log(data)
           res.render('dreams/comments', data)
-        // console.log('---------------xxx',data)
-      })
-    // console.log("---------------", result, req.params.id)
-    
+      }) 
   })
   .catch((err)=>{
     next(err)
