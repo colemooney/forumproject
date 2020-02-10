@@ -1,33 +1,39 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0;
-  background: #004810; }
+  margin: 0; }
 
 .container {
   margin: 5% 5% 5% 5%; }
 
+nav {
+  background-color: #329648 !important; }
+
+.navbar-default {
+  border-color: #329648 !important;
+  color: white !important; }
+
 a {
-  color: #329648;
   text-decoration: none; }
 
 ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-evenly; }
+  justify-content: space-evenly;
+  color: white; }
 
 ol {
   list-style-type: none;
   padding: 10px; }
 
 li {
-  padding-bottom: 10px; }
+  color: #329648; }
 
 #form {
   margin: 30px auto;
   width: 380px; }
 
 #form label {
-  color: #666;
+  color: white;
   display: inline-block;
   margin-bottom: 10px;
   text-align: center;
