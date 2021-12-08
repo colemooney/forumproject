@@ -9,9 +9,9 @@ router.get('/dreams',(req, res, next)=>{
   .then((result)=>{
       
   res.render('dreams/dreams', {result})
-  .catch((err)=>{
-    next(err)
-  })
+  
+    
+  
   
   })
 })

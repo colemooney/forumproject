@@ -19,7 +19,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -34,8 +34,8 @@ mongoose
   
   // Middleware Setup
   app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   
   app.use(require('node-sass-middleware')({
